@@ -1,12 +1,12 @@
 def create_classes(db):
-    class Pet(db.Model):
-        __tablename__ = 'pets'
+    class Groceries(db.Model):
+        __tablename__ = 'groceries'
 
-        id = db.Column(db.Integer, primary_key=True)
-        name = db.Column(db.String(64))
-        lat = db.Column(db.Float)
-        lon = db.Column(db.Float)
+        Member_number = db.Column(db.Integer, primary_key=True)
+        Date = db.Column(db.Date)
+        itemDescription = db.Column(db.String())
 
         def __repr__(self):
-            return '<Pet %r>' % (self.name)
-    return Pet
+            return '<Grocery id %r>' % (self.name)
+    return Groceries
+
