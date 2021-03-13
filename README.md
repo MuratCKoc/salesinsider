@@ -18,9 +18,10 @@ Specifically we are interested in looking at answering three questions:
  3. What can they possibly purchase together, (I.E. what can be bundled together)?
  4. When is peak traffic during the day and what consumables are purchasedÉ
 
-# Sources
+# Machine Learning Methodology
  - We are planning to use a groceries dataset: https://www.kaggle.com/heeraldedhia/groceries-dataset, this contains over 38,000 lines of data.
  - We are planning to deploy an apriori algorithim.
+ - We are planning to deploy a FP (Frequency Pattern) algorithm.
 
 # Database Services
  - PostgreSQL
