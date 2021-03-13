@@ -19,8 +19,6 @@ Specifically we are interested in looking at answering three questions:
  4. When is peak traffic during the day and what consumables are purchasedÉ
 
 # Sources
-
-Data Sources
  - We are planning to use a groceries dataset: https://www.kaggle.com/heeraldedhia/groceries-dataset, this contains over 38,000 lines of data.
  - We are planning to deploy an apriori algorithim.
 
@@ -33,6 +31,9 @@ Data Sources
  - Python (Flask, Flask-SQLAlchemy)
  - HTML5
  - CSS
+
+# Libraries
+ - Scikit (for label encoding, categorical encoding and one hot encoding)
 
 # Cloud Service
  - Heroku
