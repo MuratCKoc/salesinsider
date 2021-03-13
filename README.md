@@ -1,5 +1,11 @@
 # Sales Insider Proposal
 
+Team Members:
+
+1. Murat Cagri KOC
+2. Hadi Hanif
+
+
 # Goal
 
 Shopping can be defined as a customer making a selection of good/services from a list of vendors/providers.
