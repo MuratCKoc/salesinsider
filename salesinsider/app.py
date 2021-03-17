@@ -1,14 +1,8 @@
 from models import create_classes
 import os
 # Import Flask Dependencies
-from flask import (
-    Flask,
-    render_template,
-    jsonify,
-    request,
-    url_for,
-    send_from_directory,
-    redirect
+from flask import (Flask, render_template, jsonify, request, url_for, 
+    send_from_directory, redirect
 )
 
 import jinja2.exceptions
@@ -33,12 +27,20 @@ Base.prepare(engine, reflect=True)
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+#migrate = Migrate(app, db)
 
 # Renders
 @app.route('/')
 def index():
     return render_template('index.html')
+
+# @app.route("/api/v1.0/prophet")
+# def prophets():
+#     csvFile = 'data/prophet1.csv'
+
+#     with open(csvFile) as csvFile:
+#         csvReader = csv.DictReader(csvFile)
+#         for rows in csvReader:
 
 
 @app.route('/<pagename>')

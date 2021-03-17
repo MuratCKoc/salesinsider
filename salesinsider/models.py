@@ -9,4 +9,3 @@ def create_classes(db):
         def __repr__(self):
             return '<Grocery id %r>' % (self.name)
     return Groceries
-
