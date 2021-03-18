@@ -2,11 +2,11 @@
 var options = d3.select("#select")
 var selector = d3.select("#selDataset");
 var demographics = d3.select("#sample-metadata");
-
+var url = "api/predicted_table"
 
 function init() {
     // Populate the dropdown
-    d3.json("../data/prophet1.json").then((data) =>  {
+    d3.json(url).then((data) =>  {
         var Names = data.names;
         Names.forEach((sample) => {
             selector.append("option").text(sample).property("value",sample);

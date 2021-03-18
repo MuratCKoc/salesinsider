@@ -1,5 +1,8 @@
+from pandas.io.sql import PandasSQL
 from models import create_classes
 import os
+import pandas as pd
+import pandasql as ps
 # Import Flask Dependencies
 from flask import (Flask, render_template, jsonify, request, url_for, 
     send_from_directory, redirect
@@ -34,6 +37,22 @@ db = SQLAlchemy(app)
 def index():
     return render_template('index.html')
 
+
+@app.route('/api/predicted_table')
+def dates():
+
+    groceries = Base.classes.predicted_table
+    session = Session(engine)
+
+    #news = session.query(groceries.Date, groceries.News).all()
+
+    predict = pd.read_sql("SELECT * FROM predicted_table")
+    console.log(predict)
+    hi_data = pd.read_sql_table('predicted_table', database_url)
+    query = ps.sqldf("select * from hi_data")
+
+    session.close()
+    return jsonify(query)
 # @app.route("/api/v1.0/prophet")
 # def prophets():
 #     csvFile = 'data/prophet1.csv'
