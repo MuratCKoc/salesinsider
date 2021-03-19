@@ -1,12 +1,13 @@
-from pandas.io.sql import PandasSQL
+
 from models import create_classes
 import os
 import pandas as pd
+from pandas.io.sql import PandasSQL
 import pandasql as ps
+
 # Import Flask Dependencies
 from flask import (Flask, render_template, jsonify, request, url_for, 
-    send_from_directory, redirect
-)
+    send_from_directory, redirect)
 
 import jinja2.exceptions
 
@@ -19,6 +20,7 @@ from sqlalchemy import create_engine
 
 # Import config
 from config import database_url
+
 
 #===========
 # Create an engine for the database
@@ -39,20 +41,19 @@ def index():
 
 
 @app.route('/api/predicted_table')
-def dates():
+def predictions():
 
-    groceries = Base.classes.predicted_table
-    session = Session(engine)
+    db_string = database_url
+    db = create_engine(db_string)
 
-    #news = session.query(groceries.Date, groceries.News).all()
-
-    predict = pd.read_sql("SELECT * FROM predicted_table")
-    console.log(predict)
-    hi_data = pd.read_sql_table('predicted_table', database_url)
-    query = ps.sqldf("select * from hi_data")
+    sel = pd.read_sql_table('predicted_table', database_url)
+    sel = sel.drop(sel.columns[0], axis=1)
+    
+    #hi_data = pd.read_sql_table('predicted_table', database_url)
+    #query = ps.sqldf("select * from hi_data")
 
     session.close()
-    return jsonify(query)
+    return jsonify(sel)
 # @app.route("/api/v1.0/prophet")
 # def prophets():
 #     csvFile = 'data/prophet1.csv'

@@ -1,0 +1,27 @@
+
+
+-> Add primary key to dataframe before the push
+-> Cleanup the code
+-> Add comments
+-> Complete the movement on postgres
+
+
+Flask
+-> Read the data from sql
+-> Jsonify the result in API extension
+
+
+JavaScript
+-> Read the data from API
+-> Bar chart
+-> Line graph
+-> Scatter plot
+-> Graph plot
+-> Sankey diagram
+
+HTML
+-> bar chart area
+-> Line graph area
+-> Scatter plot area
+-> Graph plot area
+-> Sankey diagram area
