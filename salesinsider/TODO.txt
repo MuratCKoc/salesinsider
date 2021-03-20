@@ -1,8 +1,11 @@
 
 
 -> Add primary key to dataframe before the push
+    Primay Key should be Dates
 -> Cleanup the code
+    Code cleanup is in progress and will be done once table has been moved onto POSTGres
 -> Add comments
+    Comments have been added.
 -> Complete the movement on postgres
 
 
