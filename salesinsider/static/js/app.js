@@ -25,8 +25,17 @@ function get_Calculations(){
     // var results = JSON.parse(url)
     // console.log(results)
     d3.json(url).then((data) => {
-        var dates = data.Date
-        console.log(data[0])
+        var columns = Object.keys(data)
+        columns.shift()
+        var PATTERN = /_Predicted/
+        predicted_columns = columns.filter(function (str) { return PATTERN.test(str); });
+        predicted_columns.forEach((item) => {
+                selector.append("option")
+                .text(item)
+                .property("value",item);
+        })
+        
+        console.log(columns)
         console.log(dates)
     })
     console.log(url)
