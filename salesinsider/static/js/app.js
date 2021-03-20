@@ -2,48 +2,83 @@
 var options = d3.select("#select")
 var selector = d3.select("#selDataset");
 var demographics = d3.select("#sample-metadata");
-var url = "api/predicted_table"
+var url = "/api/predicted_table"
 
 function init() {
     // Populate the dropdown
-    d3.json(url).then((data) =>  {
-        var Names = data.names;
-        Names.forEach((sample) => {
-            selector.append("option").text(sample).property("value",sample);
-        })
-        console.log(Names);
+    // d3.json(url).then((data) =>  {
+    //     var Names = data.names;
+    //     Names.forEach((sample) => {
+    //         selector.append("option").text(sample).property("value",sample);
+    //     })
+    //     console.log(Names);
 
-        // Use the first sample to init the charts
-        const initialSample = Names[0];
-        build_Charts(initialSample);
-        buildMetadata(initialSample)
-    });
+    //     // Use the first sample to init the charts
+    //     const initialSample = Names[0];
+    //     build_Charts(initialSample);
+    //     buildMetadata(initialSample)
+    // });
+    get_Calculations()
 };
 
-function buildMetadata(initialSample) {
-    var panel = d3.select("#sample-metadata");
-
-    d3.json("../data/prophet1.json").then(function (data) {
-        demographics.html("");
-
-        var all_metadata = data.metadata
-        // Filter the data
-        var sample_metadata = all_metadata.filter(line => line.id == initialSample)
-        
-        // Plot Guage
-        plotGauge(sample_metadata[0].wfreq);
-
-        Object.entries(sample_metadata[0]).forEach(([key, value]) => {
-            panel.append("h5").text(`${key}: ${value}`);
-        });
+function get_Calculations(){
+    // var results = JSON.parse(url)
+    // console.log(results)
+    d3.json(url).then((data) => {
+        var dates = data.Date
+        console.log(data[0])
+        console.log(dates)
     })
+    console.log(url)
 }
+
+function get_mean(arr) {
+    var sum = 0;
+        for (var n = 0; n < arr.length; n++) {
+        var price = arr[n]
+        sum += price
+    }
+    var average_price = sum / arr.length
+    return average_price
+}
+
+function get_mean(arr) {
+    var sum = 0;
+        for (var n = 0; n < arr.length; n++) {
+        var price = arr[n]
+        sum += price
+    }
+    var average_price = sum / arr.length
+    return average_price
+}
+
+
+// function buildMetadata(initialSample) {
+//     var panel = d3.select("#sample-metadata");
+
+//     d3.json("../data/prophet1.json").then(function (data) {
+//         demographics.html("");
+
+//         var all_metadata = data.metadata
+//         // Filter the data
+//         var sample_metadata = all_metadata.filter(line => line.id == initialSample)
+        
+//         // Plot Guage
+//         plotGauge(sample_metadata[0].wfreq);
+
+//         Object.entries(sample_metadata[0]).forEach(([key, value]) => {
+//             panel.append("h5").text(`${key}: ${value}`);
+//         });
+//     })
+// }
 
 // optionChanged function to reload data
 function optionChanged(newSample) {
     build_Charts(newSample);
     buildMetadata(newSample);
 }
+
+init();
 
 // function build_Charts(initialSample) {
 //     d3.json("data/prophet1.json").then((data) => {
@@ -137,4 +172,4 @@ function optionChanged(newSample) {
 // // }
 
 // // Event listener
-options.on("change", init());
+//options.on("change", init());

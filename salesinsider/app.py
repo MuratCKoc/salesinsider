@@ -43,7 +43,7 @@ def index():
 @app.route('/api/predicted_table')
 def predictions():
 
-    db_string = database_url
+    #db_string = database_url
     #engine = create_engine(db_string)
 
     sel = pd.read_sql_table('predicted_table', database_url)
@@ -53,7 +53,8 @@ def predictions():
     sel['Date'] = sel['Date'].dt.strftime('%Y-%m-%d')
     sel_js = sel.to_json()
     #session.close()
-    return  sel_js#jsonify(sel_js)
+    return  sel_js
+
 # @app.route("/api/v1.0/prophet")
 # def prophets():
 #     csvFile = 'data/prophet1.csv'
