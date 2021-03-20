@@ -44,16 +44,16 @@ def index():
 def predictions():
 
     db_string = database_url
-    db = create_engine(db_string)
+    #engine = create_engine(db_string)
 
     sel = pd.read_sql_table('predicted_table', database_url)
     sel = sel.drop(sel.columns[0], axis=1)
-    
-    #hi_data = pd.read_sql_table('predicted_table', database_url)
-    #query = ps.sqldf("select * from hi_data")
+    print(sel)
 
-    session.close()
-    return jsonify(sel)
+    sel['Date'] = sel['Date'].dt.strftime('%Y-%m-%d')
+    sel_js = sel.to_json()
+    #session.close()
+    return  sel_js#jsonify(sel_js)
 # @app.route("/api/v1.0/prophet")
 # def prophets():
 #     csvFile = 'data/prophet1.csv'
