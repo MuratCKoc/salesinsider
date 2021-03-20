@@ -2,6 +2,7 @@
 var options = d3.select("#select")
 var selector = d3.select("#selDataset");
 var demographics = d3.select("#sample-metadata");
+var plotarea = d3.select("#bar")
 var url = "/api/predicted_table"
 
 function init() {
@@ -34,9 +35,6 @@ function get_Calculations(){
                 .text(item)
                 .property("value",item);
         })
-        
-        console.log(columns)
-        console.log(dates)
     })
     console.log(url)
 }
@@ -50,17 +48,6 @@ function get_mean(arr) {
     var average_price = sum / arr.length
     return average_price
 }
-
-function get_mean(arr) {
-    var sum = 0;
-        for (var n = 0; n < arr.length; n++) {
-        var price = arr[n]
-        sum += price
-    }
-    var average_price = sum / arr.length
-    return average_price
-}
-
 
 // function buildMetadata(initialSample) {
 //     var panel = d3.select("#sample-metadata");
@@ -84,12 +71,35 @@ function get_mean(arr) {
 // optionChanged function to reload data
 function optionChanged(newSample) {
     build_Charts(newSample);
-    buildMetadata(newSample);
+    //buildMetadata(newSample);
 }
 
 init();
 
-// function build_Charts(initialSample) {
+function build_Charts(initialSample) {
+
+
+    imgUrl = '/static/images/plots/'+initialSample+".png"
+    console.log("IMAGE URL", imgUrl)
+
+    plotarea.append("p").text(imgUrl)
+    plotarea.append("img").attr({'src='})
+// var svg = plotarea.append('svg').attr({
+//   width: 300,
+//   height: 300,
+//   border: '1px solid #ccc'
+// });
+
+// svg.append('svg:image')
+// .attr({
+//   'xlink:href': 'http://www.iconpng.com/png/beautiful_flat_color/computer.png',  // can also add svg file here
+//   x: 0,
+//   y: 0,
+//   width: 128,
+//   height: 128
+// });
+    console.log("ASDASD", initialSample)
+}
 //     d3.json("data/prophet1.json").then((data) => {
 
 //         //Prepare chart data 
@@ -181,4 +191,4 @@ init();
 // // }
 
 // // Event listener
-//options.on("change", init());
+options.on("change", init());
