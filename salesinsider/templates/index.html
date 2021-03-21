@@ -8,6 +8,8 @@
   <title>Sales Insider</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
 </head>
 
 <!-- This is the landing page -->
@@ -71,7 +73,7 @@
   <div class="row">
     <div class="col-md-2">
       <div class="well">
-        <h5>Product Details:</h5>
+        <h5>Forecasted Products</h5>
         <select id="selDataset" onchange="optionChanged(this.value)"></select>
       </div>
       <div class="panel panel-primary">
@@ -81,12 +83,15 @@
         <div id="sample-metadata" class="panel-body"></div>
       </div>
     </div>
+    <div class="col-md-10">
+          <div id="wordCloud"></div>
+    </div>
+  </div>
+
     <div class="col-md-5">
       <div id="bar"></div>
     </div>
-    <div class="col-md-5">
-      <div id="gauge"></div>
-    </div>
+
   </div>
   <div class="row">
     <div class="col-md-12">
@@ -95,14 +100,24 @@
   </div>
 </div>
 
+
+
+
+
+<!-- Load d3.js -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<!-- <script src="https://d3js.org/d3.v4.js"></script> -->
+
+<!-- Load d3-cloud -->
+<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <!-- <script src="./static/js/app.js"></script> -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
-
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+
 </body>
 
 </html>
