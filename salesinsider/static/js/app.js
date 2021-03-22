@@ -44,7 +44,7 @@ function get_Calculations(){
     console.log(url)
 }
 
-function get_count() {
+function get_count(data) {
     console.log(data)
 }
 
