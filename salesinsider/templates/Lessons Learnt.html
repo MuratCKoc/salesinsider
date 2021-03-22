@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sales Insider</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<!-- This is the landing page -->
+
+<body>
+
+    <!-- Start of navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid navbar-custom">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-xs-9 phone-nav">
+              <a class="navbar-brand" href="#" id="logo"> Sales Forecasting</a>
+            </div>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right navbar-right-custom">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Types of Visualizations <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                 <li><a href="visualizations/temp.html">Introduction</a></li>
+                  <li><a href="visualizations/humidity.html">Word Cloud</a></li>
+                  <li><a href="visualizations/cloudiness.html">Plotly</a></li>
+                  <li><a href="visualizations/wind.html">Etc.</a></li>
+                </ul>
+              </li>
+              <li><a href="comparison.html">What is ETL?</a></li>
+              <li><a href="comparison.html">What We Did</a></li>
+              <li><a href="data.html">Lessons Learnt</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!-- End of navbar -->
+  
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 jumbotron text-center">
+      <h1>Lessons Learnt</h1>
+      <p>What went right, and wrong.</p>
+    </div>
+  <!-- </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2><a href="/send">Add your item here!</a></h2>
+        </div>
+      </div>
+      </div> -->
+
+      <!-- Introduction to ETL -->
+      <section>
+        <h3><b>Know Your Libraries and have alternatives</b></h3>
+        <p>As part of data analysis, we had sought to use a MLtend library. 
+            This is a tested library however, it relied on brute force meaning, it consumes high levels of RAM.
+            As such we were unable to successfully transform the data. 
+        </p>
+         </section>
+        <h3>Know Your Datasets</h3>
+        <p>Our dataset was originally intended to be solely used for an apriori analysis. 
+            Our pivot away from MLtend to FB Prophet gave us an opportunity to see if we could 
+            manipulate the data.            
+        </p>
+        <h3>Check For Escape Characters  </h3>
+        <p>During the Transformation phase we wanted to visualize our compiled data table into a set of graphs.
+            However during our compilation we kept encountering             
+        </p>
+      <ul>
+          <br>
+          <li><strong>Identifying</strong> the data that you will be using.</li>
+          <br>
+          <li><strong>Validating</strong> the data, to ensure that values being provided are in line with
+          with the given domain that you are investigating.</li>
+          <br>
+          <li><strong>Determining</strong> the format, that you want your dataset to come in. Some common-source formats are 
+          JSON, and flat files.</li>
+          <br>
+          <img src="Capture.PNG" style = "width:380px;height:220px;">
+        </ul>
+        <br clear = "left"> Etraction is the most <b>critical</b> step in the ETL process</i>
+  
+        <h2>The Transformation Process</h2>
+        <p>This step can be the lengthiest and is often the most time consuming, here you can:</p>
+        <ul>
+            <br>
+            <li><strong>Encode</strong> free-from values, this is especially important when you need to apply machine learning algorithms.</li>
+            <br>
+            <li><strong>Aggregate</strong> the data, this data will.</li>
+            <br>
+            <li><strong>Assign</strong> rules as to how the data should be treated and processed.</li>
+            <br>
+            <img src="Capture.PNG" style = "width:380px;height:220px;">
+          </ul>
+          <br clear = "left"> Etraction is the most <b>critical</b> step in the ETL process</i>
+    
+          <h2>The Load Process</h2>
+          <p>Once the transformation is complete the data can then be </p>
+          <ul>
+              <br>
+              <li><strong>Encode</strong> free-from values, this is especially important when you need to apply machine learning algorithms.</li>
+              <br>
+              <li><strong>Aggregate</strong> the data, this data will.</li>
+              <br>
+              <li><strong>Assign</strong> rules as to how the data should be treated and processed.</li>
+              <br>
+              <img src="Capture.PNG" style = "width:380px;height:220px;">
+            </ul>
+            <br clear = "left"> Etraction is the most <b>critical</b> step in the ETL process</i>        
+  
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- <script src="./static/js/app.js"></script> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+
+</html>
