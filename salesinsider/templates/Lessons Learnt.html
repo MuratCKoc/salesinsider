@@ -8,8 +8,6 @@
   <title>Sales Insider</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-
 </head>
 
 <!-- This is the landing page -->
@@ -59,8 +57,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 jumbotron text-center">
-      <h1>Sales Forecasting</h1>
-      <p>Use the interactive charts below to explore the dataset</p>
+      <h1>Lessons Learnt</h1>
+      <p>What went right, and wrong.</p>
     </div>
   <!-- </div>
       <div class="row">
@@ -70,54 +68,45 @@
       </div>
       </div> -->
 
-  <div class="row">
-    <div class="col-md-2">
-      <div class="well">
-        <h5>Forecasted Products</h5>
-        <select id="selDataset" onchange="optionChanged(this.value)"></select>
-      </div>
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">Key Highlights</h3>
-        </div>
-        <div id="sample-metadata" class="panel-body"></div>
-      </div>
-    </div>
-    <div class="col-md-10">
-          <div id="wordCloud"></div>
-    </div>
-  </div>
+      <!-- Lessons LearntL -->
+      <section>
+        
+        <p>In every project there will be opportunities to better deelop.   
+            The below are just some of the key takeaways.
+        </p>
+        <br>
+        <h4><b>Know Your Libraries and have alternatives</b></h4>
+        <p>It is often far too easy to just load up a library, without fully comprehending
+            the capabilities and limitations of the library.
+            In our case, we initially opted to use MLtend library which is a well known library for apriori analysis. 
+            The challenge with MLtend is that is not the most optimized and relies on brute force. 
+            So when we ran a code for 38,000 line items, it either took thirty minutes to run the code or would not run at all. 
+        </p>
+         </section>
+        <h4><b>Know Your Datasets</b></h4>
+        <p> If data science is a journey then your dataset are the boots to carry you there. 
+            A suboptimal dataset can put a stop to any project faster than a bad client, or a bad manager.
+            Our pivot away from MLtend to FB Prophet gave us an opportunity to see if we could 
+            manipulate the data.            
+        </p>
+        <h4><b>Know Your Migration Rules</b></h4>
+        <p> Data migration is where you can encounter the most frustrating errors.  
+            During the Transformation phase we wanted to visualize our compiled data table into a set of graphs.
+            However during our compilation we kept encountering <i>invalid escape string</i> errors. 
+            </p>
+        <p> What this means is that every column that had a special character (such as "/"), or more than 2 words
+            had to be replaced with an "_" so that the data could be properly transfered. </p>
+  
 
-    <div class="col-md-5">
-      <div id="bar"></div>
-    </div>
-
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div id="bubble"></div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<!-- Load d3.js -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-<!-- <script src="https://d3js.org/d3.v4.js"></script> -->
-
-<!-- Load d3-cloud -->
-<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
-
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <!-- <script src="./static/js/app.js"></script> -->
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="{{ url_for('static', filename='js/app.js') }}"></script>
-
-
 </body>
 
 </html>
