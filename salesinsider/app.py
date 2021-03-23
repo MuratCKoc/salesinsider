@@ -29,7 +29,7 @@ engine = create_engine(database_url)
 Base = automap_base()
 Base.prepare(engine, reflect=True)
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static")
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 db = SQLAlchemy(app)
 #migrate = Migrate(app, db)
@@ -54,6 +54,11 @@ def predictions():
     sel_js = sel.to_json()
     #session.close()
     return  sel_js
+
+@app.route('/static/images/plots')
+def get_plots():
+    return send_from_directory(app.static_folder, request.path[1:])
+
 
 # @app.route("/api/v1.0/prophet")
 # def prophets():

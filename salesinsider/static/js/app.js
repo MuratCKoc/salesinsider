@@ -4,7 +4,7 @@
 var options = d3.select("#select")
 var selector = d3.select("#selDataset");
 var demographics = d3.select("#sample-metadata");
-var plotarea = d3.select("#bar")
+var plotarea = d3.select("#plot_area")
 var url = "/api/predicted_table"
 
 function init() {
@@ -45,7 +45,12 @@ function get_Calculations(){
 }
 
 function get_count(data) {
-    console.log(data)
+    //console.log("ASD", data)
+    //vals = Object.values(data)
+    //console.log("VALS:", vals)
+    for (const [key, value] of Object.entries(data)) {
+    console.log(`${key}: ${value}`);
+}
 }
 
 function get_mean(arr) {
@@ -79,6 +84,7 @@ function get_mean(arr) {
 
 // optionChanged function to reload data
 function optionChanged(newSample) {
+  plotarea.html("")
     build_Charts(newSample);
     //buildMetadata(newSample);
 }
@@ -86,11 +92,19 @@ function optionChanged(newSample) {
 init();
 
 function build_Charts(initialSample) {
-
-    imgUrl = '/static/images/plots/'+initialSample+".png"
+    //imgUrl = 'https://github.com/MuratCKoc/salesinsider/tree/main/salesinsider/static/images/plots/'
+    img_path = '../static/images/plots/'
+    imgUrl = img_path+initialSample+'.png'
     console.log("IMAGE URL", imgUrl)
 
-    plotarea.append("p").text(imgUrl)
+    plotarea.append("img").attr("src",imgUrl).attr("width", 700)
+        .attr("height", 500)
+
+    //plot_area.html("")
+    // plotarea.append("svg:image")
+    //     .attr("xlink:href", imgUrl)
+    //     .attr("width", 500)
+    //     .attr("height", 800)
     
     console.log("ASDASD", initialSample)
 }
