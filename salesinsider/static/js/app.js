@@ -56,14 +56,16 @@ function get_count(data) {
   var sumDict = {}
   Object.entries(data).forEach(([key,value]) => {
     console.log(`${key}: ${value}`);
-    if (key === "Date" ) {
-      key.shift()
-    }
-    else {
+
       Object.entries(value).forEach(([k_,value])=>{
         console.log(`${value}`)
-    })
-    } 
+            if (k_ === "Date" ) {
+              console.log("Skipped?")
+          }
+          else {
+          console.log("SUMUP!",k_);
+          }
+      }) 
   })
 
     console.log("ASD", data)
