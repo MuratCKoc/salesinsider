@@ -25,13 +25,16 @@ function init() {
     create_WordCloud()
 };
 
+function get_wordCloud_Data(){
+  d3.json("/api/maths").then
+}
+
 function get_Calculations(){
     // var results = JSON.parse(url)
     // console.log(results)
     d3.json(url).then((data) => {
-        get_count(data)
         set_dropDown(data)
-      
+    
       })
 
     console.log(url)
@@ -52,7 +55,7 @@ function set_dropDown(data) {
         })
 }
 
-function get_count(data) {
+function get_count() {
   var sumDict = {}
   sum =0 ;
   // Object.entries(data).forEach(([key,value]) => {
@@ -106,17 +109,6 @@ function get_count(data) {
     //for (const [key, value] of Object.entries(data)) {
     //console.log(`${key}: ${value}`);
 
-
-
-function get_mean(arr) {
-    var sum = 0;
-        for (var n = 0; n < arr.length; n++) {
-        var price = arr[n]
-        sum += price
-    }
-    var average_price = sum / arr.length
-    return average_price
-}
 
 
 // optionChanged function to reload data

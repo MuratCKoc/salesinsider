@@ -51,7 +51,7 @@ def predictions():
 
     sel['Date'] = sel['Date'].dt.strftime('%Y-%m-%d')
     sel = sel.apply(pd.to_numeric, errors='ignore')
-    
+
     sel_js = sel.to_json()
     #session.close()
     return  sel_js
@@ -61,7 +61,18 @@ def get_plots():
     return send_from_directory(app.static_folder, request.path[1:])
 
 
-# @app.route("/api/v1.0/prophet")
+@app.route("/api/maths")
+def get_maths():
+    sel = pd.read_sql_table('predicted_table', database_url)
+    sel = sel.drop(sel.columns[0], axis=1)
+    
+    # Convert the entire dataframe data types into numeric for calculations
+    calc_df = sel.apply(pd.to_numeric, errors='ignore')
+    calc_df = calc_df.fillna(0)
+    counts_df = calc_df.drop('Date',1)
+
+    results_df = counts_df.sum()
+    return results_df.to_json()
 # def prophets():
 #     csvFile = 'data/prophet1.csv'
 
