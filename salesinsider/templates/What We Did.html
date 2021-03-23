@@ -68,7 +68,7 @@
       </div>
       </div> -->
 
-      <!-- Lessons LearntL -->
+      <!-- Steps outlining our project -->
       <section>
         
         <h4><b>Step 0: Agreeing on the Topic</b></h4>
@@ -77,24 +77,31 @@
         So say people like to buy cigarettes, any products that will be bundled with cigarettes will appear more frequently. </p>
         <br>
         <h4><b>Step 1: Selecting the Dataset</b></h4>
-        <p>Our initial dataset consists of ~38,000 line items. Each with three columns, Member ID, Date of purchase and item purchased. 
+        <p>Our initial dataset consists of ~38,000 line items that came in a .CSV format. Each with three columns, Member ID, Date of purchase and item purchased. 
         </p>
          </section>
-        <h4><b>Know Your Datasets</b></h4>
-        <p> If data science is a journey then your dataset are the boots to carry you there. 
-            A suboptimal dataset can put a stop to any project faster than a bad client, or a bad manager.
-            Our pivot away from MLtend to FB Prophet gave us an opportunity to see if we could 
-            manipulate the data.            
+        <h4><b>Step 2: Attempt an Apriori Analysis</b></h4>
+        <p> We initially attempted to do an Apriori analysis (market baskey analysis) using the MLtend library.
+          This failed as when we ran the code it required large amounts of RAM, we determined this to be because the library 
+          is poorly optimized. We then decided to use FB Prophet to conduct a sales forecasting analysis.          
         </p>
-        <h4><b>Know Your Migration Rules</b></h4>
-        <p> Data migration is where you can encounter the most frustrating errors.  
-            During the Transformation phase we wanted to visualize our compiled data table into a set of graphs.
-            However during our compilation we kept encountering <i>invalid escape string</i> errors. 
+        <h4><b>Step 3: One Hot Encoding</b></h4>
+        <p> After fetching our data, we deploy a get dummy variable. 
+          This is similar <i>one-hot encoding</i> wherein the data is converted in boolean values (either you have bought the products
+          or you have not). 
             </p>
-        <p> What this means is that every column that had a special character (such as "/"), or more than 2 words
-            had to be replaced with an "_" so that the data could be properly transfered. </p>
-  
-
+        <h4><b>Step 4: Group the Data</b></h4>
+        <p> After encoding the data, then proceed to group all items by by date.
+          The data becomes the primary key for data.</p>
+        <h4><b>Step 5: Removing Special Characters</b></h4>
+        <p> We then replace any special characters in the column names such as "/", "()", with "_".  This is important for the following steps 
+          and when we move the table to PostGRES. 
+            </p>          
+        <h4><b>Step 6: Creating the For Loop</b></h4>
+        <p> We now design the For Loop that will run the data. 
+          This is where the ML component of the project comes in.
+          We deploy FB Prophet to allow us to determine what the Actual  
+            </p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
