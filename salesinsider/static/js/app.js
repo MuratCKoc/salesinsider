@@ -54,33 +54,36 @@ function set_dropDown(data) {
 
 function get_count(data) {
   var sumDict = {}
-  Object.entries(data).forEach(([key,value]) => {
-    console.log(`${key}: ${value}`);
+  sum =0 ;
+  // Object.entries(data).forEach(([key,value]) => {
+  //   console.log(`${key}: ${value}`);
 
-      Object.entries(value).forEach(([k_,value])=>{
-        console.log(`${value}`)
-            if (k_ === "Date" ) {
-              console.log("Skipped?")
-          }
-          else {
-          console.log("SUMUP!",k_);
-          }
-      }) 
-  })
+  //     Object.entries(value).forEach(([k_,value])=>{
+  //       console.log(`${value}`)
+  //           if (k_ === "Date" ) {
+  //             console.log("Skipped?")
+  //         }
+  //         else {
+  //         sum += value
+  //         }
+  //     } ) 
+  //     sumDict[key] = sum;
+  //     sum =0;
+  // })
 
-    console.log("ASD", data)
+  //   console.log("ASD", sumDict)
 
-    dataArray = []
-    dataArray = Object.keys(data)
-    console.log("COL",dataArray)
+  //   dataArray = []
+  //   dataArray = Object.keys(data)
+  //   console.log("COL",dataArray)
 
-    valAr = []
-    valAr = Object.values(data)
-    console.log(valAr[1])
-    ar = Object.values(valAr[1])
-    console.log(ar)
-    totalAr = (Object.values(ar).reduce((a,b)=>a+b,0))
-    console.log("VAL",totalAr)
+  //   valAr = []
+  //   valAr = Object.values(data)
+  //   console.log(valAr[1])
+  //   ar = Object.values(valAr[1])
+  //   console.log(ar)
+  //   totalAr = (Object.values(ar).reduce((a,b)=>a+b,0))
+  //   console.log("VAL",totalAr)
     
     //Object.entries(data[0]).forEach(([key, value]) => {
            //panel.append("h5").text(`${key}: ${value}`);
@@ -115,24 +118,6 @@ function get_mean(arr) {
     return average_price
 }
 
-// function buildMetadata(initialSample) {
-//     var panel = d3.select("#sample-metadata");
-
-//     d3.json("../data/prophet1.json").then(function (data) {
-//         demographics.html("");
-
-//         var all_metadata = data.metadata
-//         // Filter the data
-//         var sample_metadata = all_metadata.filter(line => line.id == initialSample)
-        
-//         // Plot Guage
-//         plotGauge(sample_metadata[0].wfreq);
-
-//         Object.entries(sample_metadata[0]).forEach(([key, value]) => {
-//             panel.append("h5").text(`${key}: ${value}`);
-//         });
-//     })
-// }
 
 // optionChanged function to reload data
 function optionChanged(newSample) {
