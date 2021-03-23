@@ -29,10 +29,20 @@ function get_Calculations(){
     // var results = JSON.parse(url)
     // console.log(results)
     d3.json(url).then((data) => {
+        get_count(data)
+        set_dropDown(data)
+      
+      })
+
+    console.log(url)
+}
+
+function set_dropDown(data) {
+          // Populate Drop Down
         var columns = Object.keys(data)
         // Remove Dates
         columns.shift()
-        get_count(data)
+        
         var PATTERN = /_Predicted/
         predicted_columns = columns.filter(function (str) { return PATTERN.test(str); });
         predicted_columns.forEach((item) => {
@@ -40,18 +50,58 @@ function get_Calculations(){
                 .text(item)
                 .property("value",item);
         })
-    })
-    console.log(url)
 }
 
 function get_count(data) {
-    //console.log("ASD", data)
+  var sumDict = {}
+  Object.entries(data).forEach(([key,value]) => {
+    console.log(`${key}: ${value}`);
+    if (key === "Date" ) {
+      key.shift()
+    }
+    else {
+      Object.entries(value).forEach(([k_,value])=>{
+        console.log(`${value}`)
+    })
+    } 
+  })
+
+    console.log("ASD", data)
+
+    dataArray = []
+    dataArray = Object.keys(data)
+    console.log("COL",dataArray)
+
+    valAr = []
+    valAr = Object.values(data)
+    console.log(valAr[1])
+    ar = Object.values(valAr[1])
+    console.log(ar)
+    totalAr = (Object.values(ar).reduce((a,b)=>a+b,0))
+    console.log("VAL",totalAr)
+    
+    //Object.entries(data[0]).forEach(([key, value]) => {
+           //panel.append("h5").text(`${key}: ${value}`);
+           //console.log(`KEY : ${key} Value: ${value}`)
+         //});
+}
+    //Prepare data to sort, Store them into Array
+//         for (var i=0; i < currentSample.sample_values.length; i++) {
+//             var sDict = {}
+
+//             sDict.otu_id = currentSample.otu_ids[i]
+
+//             sDict.value = currentSample.sample_values[i]
+
+//             sDict.label = currentSample.otu_labels[i]
+//             samplesArr.push(sDict);
+//         }
     //vals = Object.values(data)
     //console.log("VALS:", vals)
-    for (const [key, value] of Object.entries(data)) {
-    console.log(`${key}: ${value}`);
-}
-}
+    //for (const [key, value] of Object.entries(data)) {
+    //console.log(`${key}: ${value}`);
+
+
 
 function get_mean(arr) {
     var sum = 0;
@@ -173,30 +223,74 @@ function build_Charts(initialSample) {
 //     })
 // }
 
-// // function plotGauge(wfreq) {
-// //     var data = [{
-// //         domain: {x: [0, 1], y: [0, 1]},
-// //         value: wfreq,
-// //         mode: "gauge+number+delta",
-// //         delta: {reference: 9, increasing: {color:"green"}},
-// //         gauge: {
-// //         axis: { range: [null, 10] },
-// //             steps: [
-// //             { range: [0, 5], color: "lightgray" },
-// //             { range: [5, 10], color: "gray" }
-// //             ],
 
-// //         threshold: {line: { color: "red", width: 4 }},
-// //         thickness: 0.75},
-// //         type: "indicator",
-// //         title: { 
-// //             text: "Belly Button Washing Frequency Scrubs Per Week",
-// //             font: {size: 15}}
-// //     }]
+function create_barChart() {
+  // create 2 data_set
+var data1 = [
+   {group: "A", value: 4},
+   {group: "B", value: 16},
+   {group: "C", value: 8}
+];
 
-// //     var layout = { widht: 400, height:500, margin: {t:0, b:0} };
-// //     Plotly.newPlot("gauge", data, layout);
-// // }
+var data2 = [
+   {group: "A", value: 7},
+   {group: "B", value: 1},
+   {group: "C", value: 20}
+];
+
+// set the dimensions and margins of the graph
+var margin = {top: 30, right: 30, bottom: 70, left: 60},
+    width = 460 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+// append the svg object to the body of the page
+var svg = d3.select("#barChart")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// X axis
+var x = d3.scaleBand()
+  .range([ 0, width ])
+  .domain(data1.map(function(d) { return d.group; }))
+  .padding(0.2);
+svg.append("g")
+  .attr("transform", "translate(0," + height + ")")
+  .call(d3.axisBottom(x))
+
+// Add Y axis
+var y = d3.scaleLinear()
+  .domain([0, 20])
+  .range([ height, 0]);
+svg.append("g")
+  .attr("class", "myYaxis")
+  .call(d3.axisLeft(y));
+
+// A function that create / update the plot for a given variable:
+function update(data) {
+
+  var u = svg.selectAll("rect")
+    .data(data)
+
+  u
+    .enter()
+    .append("rect")
+    .merge(u)
+    .transition()
+    .duration(1000)
+      .attr("x", function(d) { return x(d.group); })
+      .attr("y", function(d) { return y(d.value); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.value); })
+      .attr("fill", "#69b3a2")
+}
+
+// Initialize the plot with the first dataset
+update(data1)
+}
 
 // // Event listener
 options.on("change", init());

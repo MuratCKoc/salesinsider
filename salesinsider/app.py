@@ -48,9 +48,10 @@ def predictions():
 
     sel = pd.read_sql_table('predicted_table', database_url)
     sel = sel.drop(sel.columns[0], axis=1)
-    print(sel)
 
     sel['Date'] = sel['Date'].dt.strftime('%Y-%m-%d')
+    sel = sel.apply(pd.to_numeric, errors='ignore')
+    
     sel_js = sel.to_json()
     #session.close()
     return  sel_js
