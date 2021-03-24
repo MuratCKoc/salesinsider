@@ -43,9 +43,6 @@ def index():
 @app.route('/api/predicted_table')
 def predictions():
 
-    #db_string = database_url
-    #engine = create_engine(db_string)
-
     sel = pd.read_sql_table('predicted_table', database_url)
     sel = sel.drop(sel.columns[0], axis=1)
 
@@ -61,25 +58,17 @@ def get_plots():
     return send_from_directory(app.static_folder, request.path[1:])
 
 
-@app.route("/api/maths")
-def get_maths():
+@app.route("/api/noDate")
+def get_noDate_sum():
     sel = pd.read_sql_table('predicted_table', database_url)
     sel = sel.drop(sel.columns[0], axis=1)
     
-    # Convert the entire dataframe data types into numeric for calculations
-    calc_df = sel.apply(pd.to_numeric, errors='ignore')
-    calc_df = calc_df.fillna(0)
-    counts_df = calc_df.drop('Date',1)
+    # Fill the NaN's
+    calc_df = sel.fillna(0)
+    noDate_df = calc_df.drop('Date',1)
 
-    results_df = counts_df.sum()
-    return results_df.to_json()
-# def prophets():
-#     csvFile = 'data/prophet1.csv'
-
-#     with open(csvFile) as csvFile:
-#         csvReader = csv.DictReader(csvFile)
-#         for rows in csvReader:
-
+    noDate_sum_df = noDate_df.sum()
+    return noDate_df.to_json()
 
 # @app.route('/<pagename>')
 # def admin(pagename):
