@@ -80,11 +80,11 @@
       <section>
       <h2>What is ETL?</h2>
       <p>ETL stands for Etract, Transform and Load.  
-          The best way to imagine ETL is as a pipeline. The data (the oil) is etracted from the ground and then, refined through the pipeline (transformed) before finally reaching a consumable end state (like plastic).  
+          The best way to imagine ETL is as a pipeline. The data (the oil) is etracted from the ground and then, refined through the pipeline (transformed) before finally reaching a consumable end state (loaded).  
       </p>
        </section>
     <h2>The Etraction Process</h2>
-    <p>The first step in any sort of data integration strategy is the etraction process. This can process can be subdivided into three steps:</p>
+    <p>The first step in any sort of data decision making is the etraction process. This can process can be subdivided into three steps:</p>
     <ul>
         <br>
         <li><strong>Identifying</strong> the data that you will be using.</li>
@@ -93,7 +93,7 @@
         with the given domain that you are investigating.</li>
         <br>
         <li><strong>Determining</strong> the format, that you want your dataset to come in. Some common-source formats are 
-        JSON, and flat files.</li>
+        JSON, and flat files (CSVs, etc.).</li>
         <br>
           <pre class="pre-scrollable"><code>@app.route('/api/predicted_table')
 def predictions():
@@ -111,7 +111,7 @@ def predictions():
       <br clear = "left"> Etraction is the most <b>critical</b> step in the ETL process</i>
 
       <h2>The Transformation Process</h2>
-      <p>This step can be the lengthiest and is often the most time consuming, here you can:</p>
+      <p>This step can be the lengthiest and is often the most time consuming, here you:</p>
       <ul>
           <br>
           <li><strong>Encode</strong> free-from values, this is especially important when you need to apply machine learning algorithms.</li>
@@ -128,9 +128,10 @@ def predictions():
         <p>Once the transformation is complete the data can then be </p>
         <ul>
             <br>
-            <li><strong>Encode</strong> free-from values, this is especially important when you need to apply machine learning algorithms.</li>
+            <li><strong>Decide</strong> where the transformed dataset will be loaded.</li>
             <br>
-            <li><strong>Aggregate</strong> the data, this data will.</li>
+            <li><strong>Check</strong> to see if the data has been transferred successfully.
+            There are cases where the application may reject or incorrectly import the data.</li>
             <br>
             <li><strong>Assign</strong> rules as to how the data should be treated and processed.</li>
             <br>
