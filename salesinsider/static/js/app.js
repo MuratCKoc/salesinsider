@@ -75,39 +75,8 @@ function get_count() {
   // })
 
   //   console.log("ASD", sumDict)
-
-  //   dataArray = []
-  //   dataArray = Object.keys(data)
-  //   console.log("COL",dataArray)
-
-  //   valAr = []
-  //   valAr = Object.values(data)
-  //   console.log(valAr[1])
-  //   ar = Object.values(valAr[1])
-  //   console.log(ar)
-  //   totalAr = (Object.values(ar).reduce((a,b)=>a+b,0))
-  //   console.log("VAL",totalAr)
-    
-    //Object.entries(data[0]).forEach(([key, value]) => {
-           //panel.append("h5").text(`${key}: ${value}`);
-           //console.log(`KEY : ${key} Value: ${value}`)
-         //});
 }
-    //Prepare data to sort, Store them into Array
-//         for (var i=0; i < currentSample.sample_values.length; i++) {
-//             var sDict = {}
 
-//             sDict.otu_id = currentSample.otu_ids[i]
-
-//             sDict.value = currentSample.sample_values[i]
-
-//             sDict.label = currentSample.otu_labels[i]
-//             samplesArr.push(sDict);
-//         }
-    //vals = Object.values(data)
-    //console.log("VALS:", vals)
-    //for (const [key, value] of Object.entries(data)) {
-    //console.log(`${key}: ${value}`);
 
 
 
