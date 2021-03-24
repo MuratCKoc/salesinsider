@@ -38,19 +38,19 @@ db = SQLAlchemy(app)
 def index():
     return render_template('index.html')
 
-@app.route('/etl.html')
+@app.route('/etl')
 def route_etl():
     return render_template('etl.html')
     
-@app.route('/what_we_did.html')
+@app.route('/what_we_did')
 def what_we_did():
     return render_template('what_we_did.html')
 
-@app.route('/lessons_learnt.html')
+@app.route('/lessons_learnt')
 def lessons_learnt():
     return render_template('lessons_learnt.html')
 
-@app.route('/visualizations.html')
+@app.route('/visualizations')
 def get_visuals():
     return render_template('visualizations.html')
 
@@ -71,7 +71,7 @@ def get_plots():
     return send_from_directory(app.static_folder, request.path[1:])
 
 
-@app.route("/api/noDate")
+@app.route("/api/nodate")
 def get_noDate_sum():
     sel = pd.read_sql_table('predicted_table', database_url)
     sel = sel.drop(sel.columns[0], axis=1)

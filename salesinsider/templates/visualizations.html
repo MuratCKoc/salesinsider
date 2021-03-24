@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Sales Insider</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Boostrap Stylesheet -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" media="screen">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 
@@ -42,14 +43,13 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                   aria-expanded="false">Project Guide<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="introduction.html">Introduction</a></li>
-                  <li><a href="etl.html">What is ETL?</a></li>
-                  <li><a href="what_we_did.html">What we did</a></li>
-                  <li><a href="lessons_learnt.html">Lessons Learnt</a></li>
+                  <li><a href="/">Introduction</a></li>
+                  <li><a href="/etl">What is ETL?</a></li>
+                  <li><a href="/what_we_did">What we did</a></li>
+                  <li><a href="/lessons_learnt">Lessons Learnt</a></li>
                 </ul>
               </li>
-              <li><a href="visualizations.html">Visualizations</a></li>
-              <li><a href="/">About us</a></li>
+              <li><a href="/visualizations">Visualizations</a></li>
 
             </ul>
           </div><!-- /.navbar-collapse -->
@@ -113,7 +113,6 @@
 
 
 
-
 <!-- Load d3.js -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
@@ -125,7 +124,14 @@
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <!-- <script src="./static/js/app.js"></script> -->
 
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+<!-- jQuery CDN -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Bootstrap CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 
 
 </body>
