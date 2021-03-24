@@ -39,6 +39,18 @@ db = SQLAlchemy(app)
 def index():
     return render_template('index.html')
 
+@app.route('/etl.html')
+def route_etl():
+    return render_template('etl.html')
+    
+@app.route('/what_we_did.html')
+def what_we_did():
+    return render_template('what_we_did.html')
+
+@app.route('/lessons_learnt.html')
+def lessons_learnt():
+    return render_template('lessons_learnt.html')
+
 
 @app.route('/api/predicted_table')
 def predictions():
@@ -49,9 +61,7 @@ def predictions():
     sel['Date'] = sel['Date'].dt.strftime('%Y-%m-%d')
     sel = sel.apply(pd.to_numeric, errors='ignore')
 
-    sel_js = sel.to_json()
-    #session.close()
-    return  sel_js
+    return sel.to_json()
 
 @app.route('/static/images/plots')
 def get_plots():
@@ -68,7 +78,7 @@ def get_noDate_sum():
     noDate_df = calc_df.drop('Date',1)
 
     noDate_sum_df = noDate_df.sum()
-    return noDate_df.to_json()
+    return noDate_sum_df.to_json()
 
 # @app.route('/<pagename>')
 # def admin(pagename):

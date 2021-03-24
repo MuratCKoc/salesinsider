@@ -28,3 +28,9 @@ HTML
 -> Scatter plot area
 -> Graph plot area
 -> Sankey diagram area
+
+
+Charts
+Bargraph
+shopping cart svg
+word cloud

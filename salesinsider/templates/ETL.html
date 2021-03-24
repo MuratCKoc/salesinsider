@@ -94,6 +94,17 @@
         <li><strong>Determining</strong> the format, that you want your dataset to come in. Some common-source formats are 
         JSON, and flat files.</li>
         <br>
+          <pre class="pre-scrollable"><code>@app.route('/api/predicted_table')
+def predictions():
+
+    sel = pd.read_sql_table('predicted_table', database_url)
+    sel = sel.drop(sel.columns[0], axis=1)
+
+    sel['Date'] = sel['Date'].dt.strftime('%Y-%m-%d')
+    sel = sel.apply(pd.to_numeric, errors='ignore')
+
+    return sel.to_json()
+          </code></pre>
         <img src="Capture.PNG" style = "width:380px;height:220px;">
       </ul>
       <br clear = "left"> Etraction is the most <b>critical</b> step in the ETL process</i>
