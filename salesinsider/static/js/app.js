@@ -75,6 +75,23 @@ function get_count() {
   // })
 
   //   console.log("ASD", sumDict)
+
+  //   dataArray = []
+  //   dataArray = Object.keys(data)
+  //   console.log("COL",dataArray)
+
+  //   valAr = []
+  //   valAr = Object.values(data)
+  //   console.log(valAr[1])
+  //   ar = Object.values(valAr[1])
+  //   console.log(ar)
+  //   totalAr = (Object.values(ar).reduce((a,b)=>a+b,0))
+  //   console.log("VAL",totalAr)
+    
+    //Object.entries(data[0]).forEach(([key, value]) => {
+           //panel.append("h5").text(`${key}: ${value}`);
+           //console.log(`KEY : ${key} Value: ${value}`)
+         //});
 }
 
 

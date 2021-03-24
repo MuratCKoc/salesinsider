@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sales Insider</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<!-- This is the landing page -->
+
+<body>
+
+    <!-- Start of navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid navbar-custom">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="row">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="col-xs-9 phone-nav">
+              <a class="navbar-brand" href="/" id="logo"> Sales Forecasting</a>
+            </div>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right navbar-right-custom">
+              <!-- <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                  aria-expanded="false">Types of Visualizations <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="visualizations/introduction.html">Introduction</a></li>
+                  <li><a href="visualizations/wcloud.html.html">Word Cloud</a></li>
+                  <li><a href="visualizations/plotly.html">Plotly</a></li>
+                  <li><a href="visualizations/etc.html">Etc.</a></li>
+                </ul>
+              </li> -->
+              <li><a href="etl.html">What is ETL?</a></li>
+              <li><a href="what_we_did.html">What We Did</a></li>
+              <li><a href="lessons_learnt.html">Lessons Learnt</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+          </div>
+          </div><!-- /.container-fluid -->
+          </nav>
+          <!-- End of navbar -->
+  
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 jumbotron text-center">
+      <h1>Sales Forecasting</h1>
+      <p>Use the interactive charts below to explore the dataset</p>
+    </div>
+  <!-- </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2><a href="/send">Add your item here!</a></h2>
+        </div>
+      </div>
+      </div> -->
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="well">
+        <h5>Forecasted Products</h5>
+        <select id="selDataset" onchange="optionChanged(this.value)"></select>
+      </div>
+      <!-- <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Key Highlights</h3>
+        </div>
+        <div id="sample-metadata" class="panel-body"></div>
+      </div>
+    </div> -->
+    <div class="col-md-8">
+      <div id="plot_area"></div>
+          
+    </div>
+  </div>
+  </div>
+  <div class="row"> 
+    <div class="col-md-12">
+      <div id="wordCloud"></div>
+    </div>
+  </div>
+
+  <!-- BAR CHART AREA -->
+  <!-- <div class="row">
+    <div class="col-md-12">
+    <button onclick="update(data1)">Actual</button>
+    <button onclick="update(data2)">Predicted</button> 
+      <div id="barChart">
+      
+      
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+<!-- Load d3.js -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<!-- <script src="https://d3js.org/d3.v4.js"></script> -->
+
+<!-- Load d3-cloud -->
+<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<!-- <script src="./static/js/app.js"></script> -->
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+
+</body>
+
+</html>

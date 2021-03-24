@@ -50,6 +50,10 @@ def what_we_did():
 def lessons_learnt():
     return render_template('lessons_learnt.html')
 
+@app.route('/visualizations.html')
+def get_visuals():
+    return render_template('visualizations.html')
+
 
 @app.route('/api/predicted_table')
 def predictions():
