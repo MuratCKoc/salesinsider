@@ -1,5 +1,4 @@
 
-from models import create_classes
 import os
 import pandas as pd
 from pandas.io.sql import PandasSQL
@@ -9,7 +8,7 @@ import pandasql as ps
 from flask import (Flask, render_template, jsonify, request, url_for, 
     send_from_directory, redirect)
 
-import jinja2.exceptions
+#import jinja2.exceptions
 
 #Import Sqlalchemy Dependencies
 import sqlalchemy
@@ -22,9 +21,9 @@ from sqlalchemy import create_engine
 from config import database_url
 
 
-#===========
+#==================================
 # Create an engine for the database
-#============
+#==================================
 engine = create_engine(database_url)
 Base = automap_base()
 Base.prepare(engine, reflect=True)
@@ -34,7 +33,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 db = SQLAlchemy(app)
 #migrate = Migrate(app, db)
 
-# Renders
+# Routes
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -92,7 +91,7 @@ def get_noDate_sum():
 
 # @app.route('/test')
 # def test():
-#     return '<strong>It\'s Alive!</strong>'
+#     return '<strong>Its Live</strong>'
 
 
 # @app.errorhandler(jinja2.exceptions.TemplateNotFound)
