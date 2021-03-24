@@ -94,17 +94,9 @@
         <h4><b>Step 4: Group the Data</b></h4>
         <p> After encoding the data, then proceed to group all items by by date.
           The data becomes the primary key for data.</p>
-        <h4><b>Step 5: Removing Special Characters</b></h4>
+        <h4><b>Step 5: Prepare the data for ML:</b></h4>
         <p> We then replace any special characters in the column names such as "/", "()", with "_".  This is important for the following steps 
-          and when we move the table to PostGRES. 
-            </p>          
-        <h4><b>Step 6: Creating the For Loop</b></h4>
-        <p> We now design the For Loop that will run the data. 
-          This is where the ML component of the project comes in.
-          We deploy FB Prophet to allow us to determine what the Actual  
-            </p>
-
-        <h4><b>Step x:Prepare the data for ML:</b></h4>
+          and when we move the table to PostGRES.
         <pre><code># Format the data, remove ".()/ " characters and restructure the names
 # When tried to move the tables into SQL we received errors, the cause of this was the certain column names have parenthesis.
 # The parentheses are escape strings which cause an error, so we have to replace them.
@@ -124,7 +116,12 @@ grouped_df.columns = grouped_df.columns.str.replace("[ ]", "_")
 # 'flower_soil_or_fertilizer',
 </code></pre>
 
-        <h4><b>Step x:Facebook Prophet:</b></h4>
+
+        <h4><b>Step 6:Facebook Prophet:</b></h4>
+        <p> After cleansing the data we will then begin to code our For Loop.
+          Our first For Loop is for all the rows in the table. This is fairly straightforward.
+          The second For Loop is for all the columns.
+            </p>
         <pre><code># Create master dataframe
 master_df = pd.DataFrame()
 
@@ -147,8 +144,14 @@ for j in range(727, len(grouped_df.index)):
     predicted_df = forecast[["ds", "yhat"]]
     
     predicted_df.yhat = predicted_df.yhat.round()
+</code></pre>    
 
-    # Rename the column contains the predicted values
+<h4><b>Step 8:Renaming Columns and Generating Plots:</b></h4>
+        <p> When we are done with the For Loops, we now begin to clean up the table by renaming the newly made columns.
+          We also generate graphs for each one of the tables that show us the frequency for each item. 
+          The second For Loop is for all the columns.
+            </p>
+<pre><code>  # Rename the column contains the predicted values
     predicted_ColName = grouped_df.columns[i]+"_Predicted"
 
     # Generate a figure (plot) displaying the forecast
@@ -182,7 +185,10 @@ for j in range(727, len(grouped_df.index)):
       break
 
 </code></pre>
-        <h4><b>Step x:Convert Object type to float64</b></h4>
+        <h4><b>Step 7:Convert Object type to float64</b></h4>
+        <p> Now that we have a new table we need to convert the columns from "strings" to "floats".
+          Failing to do this will lead to problems with visualizing the code in Tableau.
+        </p> 
         <pre><code># We then have to start cleaning up the table and remove all "NAN"s from the predicted columns. 
 # This will make it easier for visualization purposes.
 clean_df = master_df
@@ -195,7 +201,8 @@ clean_df = clean_df.fillna(0)
 clean_df.head()
 </code></pre>
 
-        <h4><b>Step x: Load to PostgreSQL server</b></h4>
+        <h4><b>Step 8: Load to PostgreSQL server</b></h4>
+        <p> Once we have cleaned the data we then move the table onto PostgreSQL. </p>
         <pre><code># To update database with dataframe
 def Update_Database(df_name, table_name):
     engine = create_engine(database_url, echo=False)
@@ -213,12 +220,8 @@ def Update_Database(df_name, table_name):
 Update_Database(clean_df, "predicted_table")
 </code></pre>
 
-        <h4><b>Step x:Prepare the data:</b></h4>
-        <pre><code>
-</code></pre>
-        <h4><b>Step x:Prepare the data:</b></h4>
-        <pre><code>
-</code></pre>
+        <h4><b>Step 10: Visualize the Data:</b></h4>
+        <p>Once all of this is done, we begin to visualize the data on Tableau and try to identify trends and the most purchased products.</p>
 
 
 
