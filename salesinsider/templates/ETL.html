@@ -1,64 +1,65 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<head>
 
-    <title>Sales Forecasting</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Boostrap Stylesheet -->
-    <link rel="stylesheet" href="static/css/bootstrap.min.css" media="screen">
+  <title>Sales Forecasting</title>
 
-    <!-- Our own CSS stylesheet -->
-    <link rel="stylesheet" href="static/css/styles.css" media="screen">
+  <!-- Boostrap Stylesheet -->
+  <link rel="stylesheet" href="static/css/bootstrap.min.css" media="screen">
 
-  </head>
+  <!-- Our own CSS stylesheet -->
+  <link rel="stylesheet" href="static/css/styles.css" media="screen">
 
-  <body>
+</head>
+
+<body>
 
 
-    <!-- Start of navbar -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid navbar-custom">
+  <!-- Start of navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid navbar-custom">
 
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="row">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle Navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <div class="col-xs-9 phone-nav">
-              <a class="navbar-brand" href="/" id="logo"> Sales Forecasting</a>
-            </div>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="row">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="col-xs-9 phone-nav">
+            <a class="navbar-brand" href="/" id="logo"> Sales Forecasting</a>
           </div>
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right navbar-right-custom">
-               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false">Project Guide<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="/">Introduction</a></li>
-                  <li><a href="/etl">What is ETL?</a></li>
-                  <li><a href="/what_we_did">What we did</a></li>
-                  <li><a href="/lessons_learnt">Lessons Learnt</a></li>
-                </ul>
-              </li> 
-              <li><a href="/visualizations">Visualizations</a></li>
-
-            </ul>
-          </div><!-- /.navbar-collapse -->
         </div>
-      </div><!-- /.container-fluid -->
-    </nav>
-          <!-- End of navbar -->
-  
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right navbar-right-custom">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                aria-expanded="false">Project Guide<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/">Introduction</a></li>
+                <li><a href="/etl">What is ETL?</a></li>
+                <li><a href="/what_we_did">What we did</a></li>
+                <li><a href="/lessons_learnt">Lessons Learnt</a></li>
+              </ul>
+            </li>
+            <li><a href="/visualizations">Visualizations</a></li>
+
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </div><!-- /.container-fluid -->
+  </nav>
+  <!-- End of navbar -->
 <div class="container">
   <div class="row">
     <div class="col-md-12 jumbotron text-center">
@@ -149,7 +150,6 @@ def predictions():
       </p>
     </footer>
     <!-- End of footer -->
-
 <!-- Load d3.js -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
@@ -169,6 +169,8 @@ def predictions():
 <!-- Bootstrap CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+
+    
   </body>
 
 </html>
