@@ -84,30 +84,6 @@ def get_noDate_sum():
     noDate_sum_df = noDate_df.sum()
     return noDate_sum_df.to_json()
 
-# @app.route('/<pagename>')
-# def admin(pagename):
-#     return render_template(pagename+'.html')
-
-
-# @app.route('/<path:resource>')
-# def serveStaticResource(resource):
-# 	return send_from_directory('static/', resource)
-
-
-# @app.route('/test')
-# def test():
-#     return '<strong>Its Live</strong>'
-
-
-# @app.errorhandler(jinja2.exceptions.TemplateNotFound)
-# def template_not_found(e):
-#     return not_found(e)
-
-
-# @app.errorhandler(404)
-# def not_found(e):
-#     return '<strong>Page Not Found!</strong>', 404
-    
 if __name__ == "__main__":
     app.run()
 
