@@ -99,8 +99,7 @@
               # After concatenation of the data we then group all the data by the dates which gives 
               # a table we can use to conduct our machine learning algorithm.
               grouped_df = final_df.groupby("Date", as_index=False).sum()
-              grouped_df.head()
-            </pre> </code>  
+              grouped_df.head() </pre> </code>  
         <h4><b>Step 5: Prepare the data for ML:</b></h4>
         <p> We then replace any special characters in the column names such as "/", "()", with "_".  This is important for the following steps 
           and when we move the table to PostGRES.
