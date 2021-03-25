@@ -20,8 +20,6 @@ function get_Calculations(){
     d3.json(url).then((data) => {
         set_dropDown(data)
       })
-
-    console.log(url)
 }
 
 function set_dropDown(data) {
@@ -166,52 +164,68 @@ function sortProperties(obj, isNumericSort)
 }
 
 
-// function get_wordCloud_Data() {
-//   var myWords = []
-//   d3.json('/api/nodate').then((data) => {
-//         console.log(data)
-//         var myarr = sortProperties(data, true );
-//         var convArr = myarr.reverse().slice(0,10)
-//         console.log("ORDERED",myarr.reverse().slice(0,10))
-//         console.log(convArr[0][0])
-//         console.log(convArr.keys)
-//         console.log(convArr.values)
-//         //var myWords = []
+function get_wordCloud_Data() {
 
-      
-//         for (let i=0; i<convArr.length;i++){
-//           var temp_={}
-//           temp_['word']=convArr[i][0]
-//           temp_['size']=convArr[i][1]
-//           console.log(temp_)
-//           myWords.push(temp_)
-//         }
-//     return myWords
-// })}
+  // Prepare the data
+  // Parse Json
+  d3.json('/api/nodate').then((data) => {
+        console.log("Raw Data:",data)
+        // Sort descending and pick first 40
+        var myarr = sortProperties(data, true );
+        var convArr = myarr.reverse().slice(0,40)
+
+      // Transform into object
+      var myWords=[]
+      var PATTERN = /_Predicted/gi
+      for (let i=0; i<convArr.length;i++){
+          var temp_={}
+          // Pick only predicted values
+
+          if(convArr[i][0].match(PATTERN))
+          {
+            // Delete the Pattern from name
+            temp_['word']=convArr[i][0].replace(PATTERN,'')
+            // Transform the integers into wordCloud string format
+            temp_['size']=Math.trunc(convArr[i][1]/80).toString()
+            console.log(temp_)
+          }
+          myWords.push(temp_)
+        }
+    return myWords
+})
+}
 
 function create_WordCloud() {
     // List of words
-    
+    //var myWords=get_wordCloud_Data()
   // var myWords = get_wordCloud_Data()
 
   //       console.log("myWord",myWords)
-      
+   d3.json('/api/nodate').then((data) => {
+        console.log("Raw Data:",data)
+        // Sort descending and pick first 40
+        var myarr = sortProperties(data, true );
+        var convArr = myarr.reverse().slice(0,40)
 
+      // Transform into object
+      var myWords=[]
+      var PATTERN = /_Predicted/gi
+      for (let i=0; i<convArr.length;i++){
+          var temp_={}
+          // Pick only predicted values
 
-var myWords = [{word: "whole_milk", size: "40"}, 
-{word: "other_vegetables", size: "35"}, 
-{word: "rolls_or_buns", size: "31"}, 
-{word: "yogurt", size: "28"}, 
-{word: "beef", size: "26"},
-{word: "bottled_beer", size: "24"},
-{word: "candy", size: "19"},
-{word: "cake_bar", size: "21"},
-{word: "liquor", size: "8"},
-{word: "spice", size: "12"},
-{word: "snack_products", size: "14"},
-{word: "shopping_bags", size: "19"},
-{word: "soda", size: "18"},
-{word: "tropical_fruit", size: "14"} ]
+          if(convArr[i][0].match(PATTERN))
+          {
+            // Delete the Pattern from name
+            temp_['word']=convArr[i][0].replace(PATTERN,'')
+            // Transform the integers into wordCloud string format
+            temp_['size']=Math.trunc(convArr[i][1]/80).toString()
+            console.log(temp_)
+          }
+          myWords.push(temp_)
+        }
+
+console.log("Processed Object", myWords)
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
@@ -255,4 +269,5 @@ function draw(words) {
         })
         .text(function(d) { return d.text; });
 }
+})
 }

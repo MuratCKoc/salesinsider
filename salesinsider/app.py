@@ -24,9 +24,9 @@ from config import database_url
 #==================================
 # Create an engine for the database
 #==================================
-engine = create_engine(database_url)
-Base = automap_base()
-Base.prepare(engine, reflect=True)
+# engine = create_engine(database_url)
+# Base = automap_base()
+# Base.prepare(engine, reflect=True)
 
 app = Flask(__name__, static_folder="static")
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url
@@ -64,7 +64,7 @@ def predictions():
     sel['Date'] = sel['Date'].dt.strftime('%Y-%m-%d')
     sel = sel.apply(pd.to_numeric, errors='ignore')
 
-    return sel.to_json()
+    return jsonify(sel)
 
 @app.route('/static/images/plots')
 def get_plots():
