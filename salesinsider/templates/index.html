@@ -73,10 +73,14 @@
     <div class="row">
       <div class="col-md-12">
         <section>
-          <h4><b>Introduction and Hypothesis</b></h4>
-          <p>For our capstone we decided to do a Sales Forecast based on a dataset
-            with 38,000 line items. Our initial interest was in seeing what sort of foods were being consumed
-            and, the trend based on FB Prophet.
+          <h4><b>Introduction</b></h4>
+          <p>For our capstone we decided to do a sales forecast based on a dataset
+            with 38,000 line items (with 168 unique products). 
+            The benefit of a successful sales forecast analysis helps businesses manage their inventory efficiently,
+            and realize what products they should be producing for their consumers to buy.
+          </p>
+          <p> Our hypothesis was that by using FB Prophet, our simulated historical forecasts would align
+            closely with the actual purchases.
           </p>
           <br>
           <h4><b>Technologies</b></h4>
@@ -84,7 +88,7 @@
           </p>
           <ul>
 
-            <li><strong>Python</strong> (Pandas Datareader, SQLAlchemy) .</li>
+            <li><strong>Python</strong> (Pandas Datareader, SQLAlchemy) for the entire ETL process .</li>
 
             <li><strong>HTML</strong> </li>
 
@@ -93,7 +97,11 @@
             <li><strong>Javascript</strong> (D3) </li>
 
           </ul>
-          <br clear="left"> Etraction is the most <b>critical</b> step in the ETL process</i>
+          <h4><b>Findings</b></h4>
+          <p> We found that in the case of the item with the highest sale (Whole Milk), the simulated forecasts
+            were significantly <i>lower</i> in some cases than the actual. This leads us to conclude that 
+            external factors also play a large part in this dataset.
+          </p>
       </div>
     </div>
     <!-- END OF intro-->
