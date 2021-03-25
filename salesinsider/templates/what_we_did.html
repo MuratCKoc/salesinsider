@@ -92,9 +92,15 @@
           This is similar <i>one-hot encoding</i> wherein the data is converted in boolean values (either you have bought the products
           or you have not). 
             </p>
-        <h4><b>Step 4: Group the Data</b></h4>
-        <p> After encoding the data, then proceed to group all items by by date.
-          The data becomes the primary key for data.</p>
+            <code><pre> 
+              cat_df = pd.get_dummies(data_df["itemDescription"])
+              # We then concatenate the data
+              final_df = pd.concat([data_df,cat_df],axis=1)
+              # After concatenation of the data we then group all the data by the dates which gives 
+              # a table we can use to conduct our machine learning algorithm.
+              grouped_df = final_df.groupby("Date", as_index=False).sum()
+              grouped_df.head()
+            </pre> </code>  
         <h4><b>Step 5: Prepare the data for ML:</b></h4>
         <p> We then replace any special characters in the column names such as "/", "()", with "_".  This is important for the following steps 
           and when we move the table to PostGRES.
@@ -147,7 +153,7 @@ for j in range(727, len(grouped_df.index)):
     predicted_df.yhat = predicted_df.yhat.round()
 </code></pre>    
 
-<h4><b>Step 8:Renaming Columns and Generating Plots:</b></h4>
+<h4><b>Step 7:Renaming Columns and Generating Plots:</b></h4>
         <p> When we are done with the For Loops, we now begin to clean up the table by renaming the newly made columns.
           We also generate graphs for each one of the tables that show us the frequency for each item. 
           The second For Loop is for all the columns.
@@ -186,7 +192,7 @@ for j in range(727, len(grouped_df.index)):
       break
 
 </code></pre>
-        <h4><b>Step 7:Convert Object type to float64</b></h4>
+        <h4><b>Step 8:Convert Object type to float64</b></h4>
         <p> Now that we have a new table we need to convert the columns from "strings" to "floats".
           Failing to do this will lead to problems with visualizing the code in Tableau.
         </p> 
@@ -202,7 +208,7 @@ clean_df = clean_df.fillna(0)
 clean_df.head()
 </code></pre>
 
-        <h4><b>Step 8: Load to PostgreSQL server</b></h4>
+        <h4><b>Step 9: Load to PostgreSQL server</b></h4>
         <p> Once we have cleaned the data we then move the table onto PostgreSQL. </p>
         <pre><code># To update database with dataframe
 def Update_Database(df_name, table_name):
@@ -220,6 +226,7 @@ def Update_Database(df_name, table_name):
 
 Update_Database(clean_df, "predicted_table")
 </code></pre>
+
 
         <h4><b>Step 10: Visualize the Data:</b></h4>
         <p>Once all of this is done, we begin to visualize the data on Tableau and try to identify trends and the most purchased products.</p>
