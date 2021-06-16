@@ -47,7 +47,6 @@ function optionChanged(newSample) {
 init();
 
 function build_Charts(initialSample) {
-    //imgUrl = 'https://github.com/MuratCKoc/salesinsider/tree/main/salesinsider/static/images/plots/'
     img_path = '../static/images/plots/'
     imgUrl = img_path+initialSample+'.png'
     console.log("IMAGE URL", imgUrl)
@@ -164,43 +163,39 @@ function sortProperties(obj, isNumericSort)
 }
 
 
-function get_wordCloud_Data() {
+// function get_wordCloud_Data() {
 
-  // Prepare the data
-  // Parse Json
-  d3.json('/api/nodate').then((data) => {
-        console.log("Raw Data:",data)
-        // Sort descending and pick first 40
-        var myarr = sortProperties(data, true );
-        var convArr = myarr.reverse().slice(0,40)
+//   // Prepare the data
+//   // Parse Json
+//   d3.json('/api/nodate').then((data) => {
+//         console.log("Raw Data:",data)
+//         // Sort descending and pick first 40
+//         var myarr = sortProperties(data, true );
+//         var convArr = myarr.reverse().slice(0,40)
 
-      // Transform into object
-      var myWords=[]
-      var PATTERN = /_Predicted/gi
-      for (let i=0; i<convArr.length;i++){
-          var temp_={}
-          // Pick only predicted values
+//       // Transform into object
+//       var myWords=[]
+//       var PATTERN = /_Predicted/gi
+//       for (let i=0; i<convArr.length;i++){
+//           var temp_={}
+//           // Pick only predicted values
 
-          if(convArr[i][0].match(PATTERN))
-          {
-            // Delete the Pattern from name
-            temp_['word']=convArr[i][0].replace(PATTERN,'')
-            // Transform the integers into wordCloud string format
-            temp_['size']=Math.trunc(convArr[i][1]/80).toString()
-            console.log(temp_)
-          }
-          myWords.push(temp_)
-        }
-    return myWords
-})
-}
+//           if(convArr[i][0].match(PATTERN))
+//           {
+//             // Delete the Pattern from name
+//             temp_['word']=convArr[i][0].replace(PATTERN,'')
+//             // Transform the integers into wordCloud string format
+//             temp_['size']=Math.trunc(convArr[i][1]/80).toString()
+//             console.log(temp_)
+//           }
+//           myWords.push(temp_)
+//         }
+//     return myWords
+// })
+// }
 
 function create_WordCloud() {
-    // List of words
-    //var myWords=get_wordCloud_Data()
-  // var myWords = get_wordCloud_Data()
 
-  //       console.log("myWord",myWords)
    d3.json('/api/nodate').then((data) => {
         console.log("Raw Data:",data)
         // Sort descending and pick first 40

@@ -90,16 +90,15 @@
         <h4><b>Step 3: One Hot Encoding</b></h4>
         <p> After fetching our data, we deploy a get dummy variable. 
           This is similar <i>one-hot encoding</i> wherein the data is converted in boolean values (either you have bought the products
-          or you have not). 
-            </p>
-            <code><pre> 
-              cat_df = pd.get_dummies(data_df["itemDescription"])
-              # We then concatenate the data
-              final_df = pd.concat([data_df,cat_df],axis=1)
-              # After concatenation of the data we then group all the data by the dates which gives 
-              # a table we can use to conduct our machine learning algorithm.
-              grouped_df = final_df.groupby("Date", as_index=False).sum()
-              grouped_df.head() </pre> </code>  
+          or you have not). </p>
+
+            <code><pre> cat_df = pd.get_dummies(data_df["itemDescription"])
+# We then concatenate the data
+final_df = pd.concat([data_df,cat_df],axis=1)
+# After concatenation of the data we then group all the data by the dates which gives 
+# a table we can use to conduct our machine learning algorithm.
+grouped_df = final_df.groupby("Date", as_index=False).sum()
+grouped_df.head()</pre></code>  
         <h4><b>Step 5: Prepare the data for ML:</b></h4>
         <p> We then replace any special characters in the column names such as "/", "()", with "_".  This is important for the following steps 
           and when we move the table to PostGRES.
@@ -230,7 +229,19 @@ Update_Database(clean_df, "predicted_table")
         <h4><b>Step 10: Visualize the Data:</b></h4>
         <p>Once all of this is done, we begin to visualize the data on Tableau and try to identify trends and the most purchased products.</p>
 
-
+        <h1><b>Front-End</b>
+        <h4><b>Step 1: Populate the dropdown</b></h4>
+        <p> Filter the Predicted data </p>
+        <pre><code># To update database with dataframe
+var PATTERN = /_Predicted/
+predicted_columns = columns.filter(function (str) { return PATTERN.test(str); });
+predicted_columns.forEach((item) => {
+selector.append("option")
+.text(item)
+.property("value",item);
+})
+</code></pre>
+                
 
 
 <!-- Load d3.js -->

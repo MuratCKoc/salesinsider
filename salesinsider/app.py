@@ -22,19 +22,13 @@ from sqlalchemy import create_engine
 
 database_url = 'postgres://jxjswcgzrdbbwg:478c9797d5ce92f765d973a886f93de59af3de94ed90feacd3ab8c8af8601276@ec2-3-223-72-172.compute-1.amazonaws.com:5432/d85kivepj9hj9h'
 
-#==================================
-# Create an engine for the database
-#==================================
-# engine = create_engine(database_url)
-# Base = automap_base()
-# Base.prepare(engine, reflect=True)
 
 app = Flask(__name__, static_folder="static")
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 db = SQLAlchemy(app)
 #migrate = Migrate(app, db)
 
-# Routes
+#=================Routes=============#
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -56,6 +50,8 @@ def get_visuals():
     return render_template('visualizations.html')
 
 
+
+#==============API==================#
 @app.route('/api/predicted_table')
 def predictions():
 
